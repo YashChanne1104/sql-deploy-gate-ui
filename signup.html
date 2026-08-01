@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up — SQL Deploy Gate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="topbar">
+        <a href="index.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
+        <nav>
+            <a href="index.html">Log in</a>
+        </nav>
+    </div>
+
+    <div class="center-wrap">
+        <div class="auth-card">
+            <h1>Create account</h1>
+            <p class="subtitle">New developer accounts default to the Developer role.</p>
+
+            <div id="formError"></div>
+
+            <form id="signupForm">
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="username">
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="new-password">
+                </div>
+                <div class="field">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required
+                        autocomplete="new-password">
+                </div>
+                <button type="submit" class="btn btn-block" id="signupBtn">Sign up</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="index.html">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/models/AuthModel.js"></script>
+    <script src="js/controllers/SignupController.js"></script>
+</body>
+
+</html>

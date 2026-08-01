@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — SQL Deploy Gate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="topbar">
+        <a href="home.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
+        <div class="topbar-right">
+            <nav id="navLinks"></nav>
+            <div class="user-chip">
+                <span class="user-email" id="userEmail"></span>
+                <a href="#" id="logoutBtn" class="logout-link">Log out</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrap">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
+            <h1 style="margin:0;">Audit log</h1>
+        </div>
+        <div id="auditList"></div>
+        <div id="auditPager"
+            style="display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px;"></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/models/AuthModel.js"></script>
+    <script src="js/models/AuditModel.js"></script>
+    <script src="js/views/NavView.js"></script>
+    <script src="js/views/AuditView.js"></script>
+    <script src="js/controllers/AdminController.js"></script>
+</body>
+
+</html>

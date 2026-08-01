@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit — SQL Deploy Gate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="topbar">
+        <a href="home.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
+        <div class="topbar-right">
+            <nav id="navLinks"></nav>
+            <div class="user-chip">
+                <span class="user-email" id="userEmail"></span>
+                <a href="#" id="logoutBtn" class="logout-link">Log out</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrap">
+        <h1>Submit a SQL change</h1>
+
+        <form id="submitForm">
+            <div class="field">
+                <label for="sqlText">SQL</label>
+                <textarea id="sqlText" name="sqlText" class="sql-input"
+                    placeholder="-- paste your stored procedure, function, trigger, or data change here"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn" id="submitBtn">Submit for review</button>
+        </form>
+
+        <div id="submitResult" style="margin-top: 28px;"></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/models/AuthModel.js"></script>
+    <script src="js/models/SubmissionModel.js"></script>
+    <script src="js/views/NavView.js"></script>
+    <script src="js/controllers/SubmitController.js"></script>
+</body>
+
+</html>

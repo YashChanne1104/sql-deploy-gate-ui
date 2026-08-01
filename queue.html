@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Queue — SQL Deploy Gate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="topbar">
+        <a href="home.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
+        <div class="topbar-right">
+            <nav id="navLinks"></nav>
+            <div class="user-chip">
+                <span class="user-email" id="userEmail"></span>
+                <a href="#" id="logoutBtn" class="logout-link">Log out</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrap">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
+            <h1 style="margin:0;">Open submissions</h1>
+            <span id="queueCount" style="color: var(--fg-muted); font-size: 13px;"></span>
+        </div>
+        <div id="bulkBar"></div>
+        <div id="queueList"></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/models/AuthModel.js"></script>
+    <script src="js/models/SubmissionModel.js"></script>
+    <script src="js/views/NavView.js"></script>
+    <script src="js/views/QueueView.js"></script>
+    <script src="js/controllers/QueueController.js"></script>
+</body>
+
+</html>
