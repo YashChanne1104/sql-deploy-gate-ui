@@ -8,63 +8,75 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="home-page">
+<body>
     <div class="topbar">
         <a href="home.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
-        <nav class="home-nav">
-            <a href="index.html" class="btn btn-secondary btn-sm">Log in</a>
+        <nav>
+            <a href="index.html">Log in</a>
             <a href="signup.html" class="btn btn-sm">Sign up</a>
         </nav>
     </div>
 
-    <main>
     <div class="hero">
-        <span class="eyebrow home-reveal">Internal tool </span>
-        <h1 class="home-reveal">Ship SQL changes with confidence.</h1>
-        <p class="hero-sub home-reveal">
-            Every stored procedure, function, trigger, and data change is reviewed by AI before a human
-            ever sees it. An Approver signs off, DDL deploys automatically, and DML always stays a
-            manual, deliberate step.
-        </p>
-        <div class="cta-row home-reveal">
-            <a href="index.html" class="btn btn-lg">Log in</a>
-            <a href="signup.html" class="btn btn-secondary btn-lg">Create account</a>
+        <div class="hero-copy">
+            <span class="eyebrow">Internal tool · ACPL</span>
+            <h1>git push, but for<br>your <span class="hl">database</span>.</h1>
+            <p class="hero-sub">
+                Push a SQL change the way you'd push a branch. An AI reviewer checks the
+                diff before a human ever sees it. An Approver merges it — DDL deploys
+                automatically, DML always stays a manual, deliberate pull.
+            </p>
+            <div class="cta-row">
+                <a href="signup.html" class="btn btn-lg">Create account</a>
+                <a href="index.html" class="btn btn-secondary btn-lg">Log in</a>
+            </div>
+        </div>
+
+        <div class="term-window">
+            <div class="term-titlebar">
+                <span class="term-dot"></span>
+                <span class="term-dot"></span>
+                <span class="term-dot"></span>
+                <span class="term-filename">sp_RebuildIndex.sql</span>
+            </div>
+            <div class="term-body" id="termBody"></div>
         </div>
     </div>
 
-    <div class="safety-strip home-reveal">
-        <span class="safety-pill"><span class="dot"></span> AI-reviewed on submit</span>
-        <span class="safety-pill"><span class="dot"></span> DDL auto-deploys after approval</span>
-        <span class="safety-pill"><span class="dot"></span> DML always manual</span>
-        <span class="safety-pill"><span class="dot"></span> Full audit trail</span>
+    <div class="strip">
+        <span class="pill"><span class="dot"></span> AI-reviewed on every push</span>
+        <span class="pill"><span class="dot"></span> DDL auto-merges after approval</span>
+        <span class="pill"><span class="dot"></span> DML always a manual pull</span>
+        <span class="pill"><span class="dot"></span> Full commit history</span>
     </div>
 
-    <div class="section home-reveal">
-        <h2>How it works</h2>
+    <div class="section">
+        <div class="section-head">
+            <h2>The remote for your schema</h2>
+            <p>Three commands stand between a change on your machine and a change in production.</p>
+        </div>
         <div class="step-grid">
             <div class="step-card">
-                <div class="step-num">01</div>
-                <h3>Submit</h3>
-                <p>Paste your SQL — a stored proc, function, trigger, or data change — and it's classified
-                    and queued instantly.</p>
+                <span class="step-cmd">$ push</span>
+                <h3>Push your change</h3>
+                <p>Paste a stored proc, function, trigger, or data change. It's classified and queued the moment it lands.</p>
             </div>
             <div class="step-card">
-                <div class="step-num">02</div>
-                <h3>AI review</h3>
-                <p>Every submission is checked for safety, performance, and naming before it reaches a
-                    human reviewer.</p>
+                <span class="step-cmd">→ review</span>
+                <h3>AI reviews the diff</h3>
+                <p>Every push is checked for safety, performance, and naming before it reaches a human reviewer.</p>
             </div>
             <div class="step-card">
-                <div class="step-num">03</div>
-                <h3>Approve &amp; deploy</h3>
-                <p>An Approver signs off. DDL changes deploy automatically; DML changes are written out
-                    for manual execution.</p>
+                <span class="step-cmd">$ merge</span>
+                <h3>An Approver merges it</h3>
+                <p>DDL changes merge straight to the target database. DML changes are written out for manual execution — never auto-run.</p>
             </div>
         </div>
     </div>
 
-    </main>
-    <div class="footer-note">SQL Deploy Gate </div>
+    <div class="footer-note">SQL Deploy Gate</div>
+
+    <script src="js/controllers/HomeController.js"></script>
 </body>
 
 </html>

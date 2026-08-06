@@ -1,36 +1,28 @@
 // ===========================
-// NavView -- pure rendering for the topbar nav. Same nav logic is shared
-// across every authenticated page instead of being hardcoded per-page.
-//
-// Developer -> "Submit" and "Activity" (their own actions only, per backend)
-// Approver  -> "Queue" and "Activity" (full trail, per backend)
-// Admin     -> "Submit", "Queue", "Activity" (full trail), and "Users"
-//
-// "Home" is always present so there's a way back to the landing page.
+// NavView -- renders the topbar nav based on role hierarchy:
+//   Developer -> Submissions, Audit
+//   Approver  -> Submissions, Audit, Approvals
+//   Admin     -> Submissions, Audit, Approvals, Users
+// Each role sees everything the role "below" it sees, plus one more page.
+// Pure rendering -- never touches localStorage or the API directly.
 // ===========================
+const NAV_ITEMS = [
+    { href: "submissions.html", label: "Submissions", roles: ["Developer", "Approver", "Admin"] },
+    { href: "activity.html", label: "Audit", roles: ["Developer", "Approver", "Admin"] },
+    { href: "approvals.html", label: "Approvals", roles: ["Approver", "Admin"] },
+    { href: "users.html", label: "Users", roles: ["Admin"] },
+];
+
 const NavView = {
-    init(activePage) {
+    init(activeHref) {
         const navEl = document.getElementById("navLinks");
         if (!navEl) return;
 
         const role = AuthModel.getRole();
-        const links = [{ href: "home.html", label: "Home" }];
+        const items = NAV_ITEMS.filter((item) => item.roles.includes(role));
 
-        if (role === "Developer") {
-            links.push({ href: "submit.html", label: "Submit" });
-            links.push({ href: "activity.html", label: "Activity" });
-        } else if (role === "Approver") {
-            links.push({ href: "queue.html", label: "Queue" });
-            links.push({ href: "activity.html", label: "Activity" });
-        } else if (role === "Admin") {
-            links.push({ href: "submit.html", label: "Submit" });
-            links.push({ href: "queue.html", label: "Queue" });
-            links.push({ href: "activity.html", label: "Activity" });
-            links.push({ href: "users.html", label: "Users" });
-        }
-
-        navEl.innerHTML = links
-            .map(l => `<a href="${l.href}" class="${l.href === activePage ? "active" : ""}">${l.label}</a>`)
+        navEl.innerHTML = items
+            .map((item) => `<a href="${item.href}" class="${item.href === activeHref ? "active" : ""}">${item.label}</a>`)
             .join("");
     },
 };

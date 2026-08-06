@@ -3,7 +3,7 @@
 // ===========================
 document.addEventListener("DOMContentLoaded", () => {
     if (AuthModel.isLoggedIn()) {
-        window.location.href = "submit.html";
+        window.location.href = AuthModel.homeForRole();
         return;
     }
 

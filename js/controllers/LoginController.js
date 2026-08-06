@@ -4,7 +4,7 @@
 // ===========================
 document.addEventListener("DOMContentLoaded", () => {
     if (AuthModel.isLoggedIn()) {
-        redirectForRole(AuthModel.getRole());
+        window.location.href = AuthModel.homeForRole();
         return;
     }
 
@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         errorEl.innerHTML = "";
         btn.disabled = true;
-        btn.textContent = "Logging in...";
+        btn.textContent = "Signing in...";
 
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
 
         try {
-            const { role } = await AuthModel.login(email, password);
-            redirectForRole(role);
+            await AuthModel.login(email, password);
+            window.location.href = AuthModel.homeForRole();
         } catch (err) {
             errorEl.innerHTML = `<div class="error-box">${err.message}</div>`;
             btn.disabled = false;
@@ -31,13 +31,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-function redirectForRole(role) {
-    if (role === "Developer") {
-        window.location.href = "submit.html";
-    } else {
-        // Approver lands on Queue; Admin defaults to Queue but can reach
-        // Submit and Admin too via the nav.
-        window.location.href = "queue.html";
-    }
-}
