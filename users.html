@@ -15,28 +15,28 @@
             <nav id="navLinks"></nav>
             <div class="user-chip">
                 <span class="user-email" id="userEmail"></span>
+                <span id="roleTag"></span>
                 <a href="#" id="logoutBtn" class="logout-link">Log out</a>
             </div>
         </div>
     </div>
 
-    <div class="page-wrap">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
-            <h1 style="margin:0;">Users</h1>
+    <div class="dash-wrap">
+        <div class="repo-card">
+            <div class="repo-card-head">
+                <h1>Users</h1>
+            </div>
+            <p>Assign the Developer, Approver, or Admin role to any account.</p>
+            <div class="coming-soon">
+                user list + role assignment + delete — coming next.
+            </div>
         </div>
-        <div id="usersStats" style="margin-bottom: 20px;"></div>
-        <div class="users-toolbar">
-            <input type="text" id="usersSearch" class="users-search" placeholder="Search by email...">
-        </div>
-        <div id="usersMessage"></div>
-        <div id="usersList"></div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
-    <script src="js/models/UserModel.js"></script>
     <script src="js/views/NavView.js"></script>
-    <script src="js/views/UsersView.js"></script>
+    <script src="js/controllers/PageShell.js"></script>
     <script src="js/controllers/UsersController.js"></script>
 </body>
 

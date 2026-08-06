@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Queue — SQL Deploy Gate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approvals — SQL Deploy Gate</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,26 +15,29 @@
             <nav id="navLinks"></nav>
             <div class="user-chip">
                 <span class="user-email" id="userEmail"></span>
+                <span id="roleTag"></span>
                 <a href="#" id="logoutBtn" class="logout-link">Log out</a>
             </div>
         </div>
     </div>
 
-    <div class="page-wrap">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
-            <h1 style="margin:0;">Open submissions</h1>
-            <span id="queueCount" style="color: var(--fg-muted); font-size: 13px;"></span>
+    <div class="dash-wrap">
+        <div class="repo-card">
+            <div class="repo-card-head">
+                <h1>Approvals</h1>
+            </div>
+            <p>Open pull requests waiting on a merge decision.</p>
+            <div class="coming-soon">
+                queue + single/bulk approve-reject — coming next.
+            </div>
         </div>
-        <div id="bulkBar"></div>
-        <div id="queueList"></div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
-    <script src="js/models/SubmissionModel.js"></script>
     <script src="js/views/NavView.js"></script>
-    <script src="js/views/QueueView.js"></script>
-    <script src="js/controllers/QueueController.js"></script>
+    <script src="js/controllers/PageShell.js"></script>
+    <script src="js/controllers/ApprovalsController.js"></script>
 </body>
 
 </html>

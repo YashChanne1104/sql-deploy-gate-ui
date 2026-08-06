@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit — SQL Deploy Gate</title>
+    <title>Dashboard — SQL Deploy Gate</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -15,32 +15,30 @@
             <nav id="navLinks"></nav>
             <div class="user-chip">
                 <span class="user-email" id="userEmail"></span>
+                <span id="roleTag"></span>
                 <a href="#" id="logoutBtn" class="logout-link">Log out</a>
             </div>
         </div>
     </div>
 
-    <div class="page-wrap">
-        <h1>Submit a SQL change</h1>
-
-        <form id="submitForm">
-            <div class="field">
-                <label for="sqlText">SQL</label>
-                <textarea id="sqlText" name="sqlText" class="sql-input"
-                    placeholder="-- paste your stored procedure, function, trigger, or data change here"
-                    required></textarea>
+    <div class="dash-wrap">
+        <div class="repo-card">
+            <div class="repo-card-head">
+                <h1>Your workspace</h1>
             </div>
-            <button type="submit" class="btn" id="submitBtn">Submit for review</button>
-        </form>
-
-        <div id="submitResult" style="margin-top: 28px;"></div>
+            <p>Signed in as <strong id="dashEmail"></strong> — role <strong id="dashRole"></strong>.</p>
+            <div class="coming-soon">
+                Use the nav above to get to Submissions, Audit, and (depending on your
+                role) Approvals or Users.
+            </div>
+        </div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
-    <script src="js/models/SubmissionModel.js"></script>
     <script src="js/views/NavView.js"></script>
-    <script src="js/controllers/SubmitController.js"></script>
+    <script src="js/controllers/PageShell.js"></script>
+    <script src="js/controllers/DashboardController.js"></script>
 </body>
 
 </html>

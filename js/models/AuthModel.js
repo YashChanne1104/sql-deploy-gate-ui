@@ -52,15 +52,24 @@ const AuthModel = {
         window.location.href = "home.html";
     },
 
+    // Where a logged-in user should land -- on their own dashboard for now.
+    // Kept as one function so every controller stays in sync as new
+    // role-specific pages (push/pull views) get added back in.
+    homeForRole() {
+        return "dashboard.html";
+    },
+
     // Call at the top of any page that requires login.
-    // requiredRoles: optional list -- if given, redirects non-matching roles too.
+    // requiredRoles: optional list -- if given, redirects non-matching roles
+    // to their own home instead of the page they were denied, so this never
+    // creates a redirect loop.
     guard(requiredRoles = null) {
         if (!this.isLoggedIn()) {
             window.location.href = "index.html";
             return false;
         }
         if (requiredRoles && !this.hasRole(...requiredRoles)) {
-            window.location.href = "submit.html";
+            window.location.href = this.homeForRole();
             return false;
         }
         return true;

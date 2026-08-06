@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity — SQL Deploy Gate</title>
+    <title>Audit — SQL Deploy Gate</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -15,25 +15,28 @@
             <nav id="navLinks"></nav>
             <div class="user-chip">
                 <span class="user-email" id="userEmail"></span>
+                <span id="roleTag"></span>
                 <a href="#" id="logoutBtn" class="logout-link">Log out</a>
             </div>
         </div>
     </div>
 
-    <div class="page-wrap">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
-            <h1 style="margin:0;">Activity</h1>
+    <div class="dash-wrap">
+        <div class="repo-card">
+            <div class="repo-card-head">
+                <h1>Audit</h1>
+            </div>
+            <p>Every push, review, and merge — a full commit history for your database.</p>
+            <div class="coming-soon">
+                paginated audit feed — coming next.
+            </div>
         </div>
-        <div id="auditList"></div>
-        <div id="auditPager"
-            style="display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px;"></div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
-    <script src="js/models/AuditModel.js"></script>
     <script src="js/views/NavView.js"></script>
-    <script src="js/views/AuditView.js"></script>
+    <script src="js/controllers/PageShell.js"></script>
     <script src="js/controllers/ActivityController.js"></script>
 </body>
 

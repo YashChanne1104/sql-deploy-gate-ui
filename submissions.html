@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin — SQL Deploy Gate</title>
+    <title>Submissions — SQL Deploy Gate</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -15,26 +15,29 @@
             <nav id="navLinks"></nav>
             <div class="user-chip">
                 <span class="user-email" id="userEmail"></span>
+                <span id="roleTag"></span>
                 <a href="#" id="logoutBtn" class="logout-link">Log out</a>
             </div>
         </div>
     </div>
 
-    <div class="page-wrap">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
-            <h1 style="margin:0;">Audit log</h1>
+    <div class="dash-wrap">
+        <div class="repo-card">
+            <div class="repo-card-head">
+                <h1>Submissions</h1>
+            </div>
+            <p>Push a SQL change and track your own submissions here.</p>
+            <div class="coming-soon">
+                push form + your submission history — coming next.
+            </div>
         </div>
-        <div id="auditList"></div>
-        <div id="auditPager"
-            style="display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px;"></div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
-    <script src="js/models/AuditModel.js"></script>
     <script src="js/views/NavView.js"></script>
-    <script src="js/views/AuditView.js"></script>
-    <script src="js/controllers/AdminController.js"></script>
+    <script src="js/controllers/PageShell.js"></script>
+    <script src="js/controllers/SubmissionsController.js"></script>
 </body>
 
 </html>
