@@ -21,21 +21,35 @@
         </div>
     </div>
 
-    <div class="dash-wrap">
+    <div class="dash-wrap" style="max-width:800px;">
         <div class="repo-card">
             <div class="repo-card-head">
-                <h1>Submissions</h1>
+                <h1>Push a change</h1>
             </div>
-            <p>Push a SQL change and track your own submissions here.</p>
-            <div class="coming-soon">
-                push form + your submission history — coming next.
-            </div>
+            <p>Paste a stored procedure, function, trigger, or data change. It's classified and AI-reviewed the moment it lands.</p>
+
+            <form id="pushForm">
+                <div class="field">
+                    <textarea id="sqlText" name="sqlText" placeholder="-- paste your SQL here" required></textarea>
+                </div>
+                <button type="submit" class="btn" id="pushBtn">Push for review</button>
+            </form>
+
+            <div id="pushResult"></div>
+        </div>
+
+        <div style="margin-top:36px;">
+            <h2 style="font-size:16px; margin-bottom:4px;">Your pushes</h2>
+            <p style="font-size:13px;">Tap a row to see the full diff and AI verdict.</p>
+            <div id="subList"></div>
         </div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
+    <script src="js/models/SubmissionModel.js"></script>
     <script src="js/views/NavView.js"></script>
+    <script src="js/views/SubmissionsView.js"></script>
     <script src="js/controllers/PageShell.js"></script>
     <script src="js/controllers/SubmissionsController.js"></script>
 </body>
