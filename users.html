@@ -21,21 +21,26 @@
         </div>
     </div>
 
-    <div class="dash-wrap">
-        <div class="repo-card">
-            <div class="repo-card-head">
-                <h1>Users</h1>
-            </div>
-            <p>Assign the Developer, Approver, or Admin role to any account.</p>
-            <div class="coming-soon">
-                user list + role assignment + delete — coming next.
-            </div>
+    <div class="dash-wrap" style="max-width:800px;">
+        <div class="repo-card-head" style="margin-bottom:4px;">
+            <h1 style="font-size:19px;">Users</h1>
         </div>
+        <p style="margin-bottom:0;">Assign the Developer, Approver, or Admin role to any account.</p>
+
+        <div id="usersStats"></div>
+        <div class="users-toolbar">
+            <input type="text" id="usersSearch" class="users-search" placeholder="Search by email...">
+        </div>
+        <div id="usersMessage"></div>
+        <div id="usersList"></div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
+    <script src="js/models/UserModel.js"></script>
     <script src="js/views/NavView.js"></script>
+    <script src="js/views/UsersView.js"></script>
+    <script src="js/views/ModalView.js"></script>
     <script src="js/controllers/PageShell.js"></script>
     <script src="js/controllers/UsersController.js"></script>
 </body>
