@@ -10,7 +10,7 @@
 
 <body>
     <div class="topbar">
-        <a href="home.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
+        <a href="dashboard.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
         <div class="topbar-right">
             <nav id="navLinks"></nav>
             <div class="user-chip">
@@ -22,21 +22,14 @@
     </div>
 
     <div class="dash-wrap">
-        <div class="repo-card">
-            <div class="repo-card-head">
-                <h1>Your workspace</h1>
-            </div>
-            <p>Signed in as <strong id="dashEmail"></strong> — role <strong id="dashRole"></strong>.</p>
-            <div class="coming-soon">
-                Use the nav above to get to Submissions, Audit, and (depending on your
-                role) Approvals or Users.
-            </div>
-        </div>
+        <div id="workspaceRoot"></div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/models/AuthModel.js"></script>
+    <script src="js/models/SubmissionModel.js"></script>
     <script src="js/views/NavView.js"></script>
+    <script src="js/views/WorkspaceView.js"></script>
     <script src="js/controllers/PageShell.js"></script>
     <script src="js/controllers/DashboardController.js"></script>
 </body>
