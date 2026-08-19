@@ -1395,3 +1395,22 @@ p {
 .stat-pill.loading .stat-value {
     color: var(--text-faint);
 }
+
+.field-error {
+    display: block;
+    min-height: 1.1em;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #e5484d;
+    /* adjust to match your amber/graphite palette */
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.field-error.visible {
+    opacity: 1;
+}
+
+.input-invalid {
+    border-color: #e5484d !important;
+}

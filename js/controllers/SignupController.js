@@ -11,16 +11,54 @@ document.addEventListener("DOMContentLoaded", () => {
     const errorEl = document.getElementById("formError");
     const btn = document.getElementById("signupBtn");
 
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirmPassword");
+
+    const emailErrorEl = document.getElementById("emailError");
+    const passwordErrorEl = document.getElementById("passwordError");
+    const confirmErrorEl = document.getElementById("confirmPasswordError");
+
+    function clearAllErrors() {
+        errorEl.innerHTML = "";
+        [emailErrorEl, passwordErrorEl, confirmErrorEl].forEach(el => Validation.clearError(el));
+        [emailInput, passwordInput, confirmInput].forEach(el => el.classList.remove("input-invalid"));
+    }
+
+    function markInvalid(input, errorEl, message) {
+        input.classList.add("input-invalid");
+        Validation.showError(errorEl, message);
+    }
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        errorEl.innerHTML = "";
+        clearAllErrors();
 
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-        const confirm = document.getElementById("confirmPassword").value;
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const confirm = confirmInput.value;
 
-        if (password !== confirm) {
-            errorEl.innerHTML = `<div class="error-box">Passwords don't match.</div>`;
+        const emailErr = Validation.validateEmail(email);
+        const passwordErr = Validation.validatePassword(password);
+        const confirmErr = Validation.validateConfirmPassword(password, confirm);
+
+        let hasError = false;
+
+        if (emailErr) {
+            markInvalid(emailInput, emailErrorEl, emailErr);
+            hasError = true;
+        }
+        if (passwordErr) {
+            markInvalid(passwordInput, passwordErrorEl, passwordErr);
+            hasError = true;
+        }
+        if (confirmErr) {
+            markInvalid(confirmInput, confirmErrorEl, confirmErr);
+            hasError = true;
+        }
+
+        if (hasError) {
+            errorEl.innerHTML = `<div class="error-box">Please fix the highlighted fields below.</div>`;
             return;
         }
 
@@ -37,5 +75,17 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.disabled = false;
             btn.textContent = "Sign up";
         }
+    });
+
+    // Optional: live-clear a field's error as the user retypes it
+    [
+        [emailInput, emailErrorEl],
+        [passwordInput, passwordErrorEl],
+        [confirmInput, confirmErrorEl]
+    ].forEach(([input, errEl]) => {
+        input.addEventListener("input", () => {
+            input.classList.remove("input-invalid");
+            Validation.clearError(errEl);
+        });
     });
 });
