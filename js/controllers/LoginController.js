@@ -15,21 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         errorEl.innerHTML = "";
+        btn.disabled = true;
+        btn.textContent = "Signing in...";
 
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
-
-        const validationError =
-            Validation.validateEmail(email) ||
-            Validation.validateLoginPassword(password);
-
-        if (validationError) {
-            errorEl.innerHTML = `<div class="error-box">${validationError}</div>`;
-            return;
-        }
-
-        btn.disabled = true;
-        btn.textContent = "Signing in...";
 
         try {
             await AuthModel.login(email, password);
