@@ -1,5 +1,11 @@
 // ===========================
 // SignupController -- wires signup.html together.
+// If already logged in, skip straight past the form.
+// Validates client-side first (fast feedback, no round-trip for
+// obvious mistakes) -- backend is still the real source of truth and
+// re-validates everything server-side.
+// Signup does not log the user in (no token returned) -- on success we
+// send them to the login page to sign in with their new credentials.
 // ===========================
 document.addEventListener("DOMContentLoaded", () => {
     if (AuthModel.isLoggedIn()) {
@@ -17,10 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
-        const confirm = document.getElementById("confirmPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-        if (password !== confirm) {
-            errorEl.innerHTML = `<div class="error-box">Passwords don't match.</div>`;
+        const validationError =
+            Validation.validateEmail(email) ||
+            Validation.validatePassword(password) ||
+            Validation.validateConfirmPassword(password, confirmPassword);
+
+        if (validationError) {
+            errorEl.innerHTML = `<div class="error-box">${validationError}</div>`;
             return;
         }
 
@@ -29,9 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             await AuthModel.signup(email, password);
-            errorEl.innerHTML = `<div class="success-box">Account created — you can log in now.</div>`;
-            form.reset();
-            setTimeout(() => { window.location.href = "index.html"; }, 1200);
+            window.location.href = "index.html"; // go log in with the new account
         } catch (err) {
             errorEl.innerHTML = `<div class="error-box">${err.message}</div>`;
             btn.disabled = false;
