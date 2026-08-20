@@ -12,8 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("pushForm");
     const textarea = document.getElementById("sqlText");
     const btn = document.getElementById("pushBtn");
+    const overlay = document.getElementById("loading-overlay");
     const resultEl = document.getElementById("pushResult");
     const listEl = document.getElementById("subList");
+
+    function setLoading(isLoading) {
+        btn.disabled = isLoading;
+        overlay.classList.toggle("visible", isLoading);
+    }
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -21,8 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!sqlText) return;
 
         resultEl.innerHTML = "";
-        btn.disabled = true;
-        btn.textContent = "Pushing...";
+        setLoading(true);
 
         try {
             const submission = await SubmissionModel.create(sqlText);
@@ -32,8 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
             resultEl.innerHTML = `<div class="error-box inline">${err.message}</div>`;
         } finally {
-            btn.disabled = false;
-            btn.textContent = "Push for review";
+            setLoading(false);
         }
     });
 
@@ -48,8 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Rows expand in place to show the full SQL + verdict -- no separate
-    // review page needed here (that's what Approvals is for).
     function wireRowToggles() {
         listEl.querySelectorAll("[data-toggle]").forEach((head) => {
             head.addEventListener("click", () => {
