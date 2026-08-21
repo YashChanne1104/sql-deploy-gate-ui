@@ -1027,6 +1027,10 @@ p {
 }
 
 /* ---------- audit page ---------- */
+.dash-wrap.audit-wrap {
+    max-width: 1200px;
+}
+
 .audit-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -1051,77 +1055,78 @@ p {
     box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-.audit-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.audit-row {
-    background: var(--bg-raised);
+.report-table-wrap {
+    overflow-x: auto;
     border: 1px solid var(--border-soft);
     border-radius: var(--radius-lg);
-    padding: 14px 18px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
 }
 
-.audit-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 6px;
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-raised);
 }
 
-.audit-status-dot.pending {
-    background: var(--accent);
+.report-table thead th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    white-space: nowrap;
 }
 
-.audit-status-dot.approved {
-    background: var(--add);
+.report-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
+    font-size: 13px;
+    color: var(--text-dim);
 }
 
-.audit-status-dot.rejected {
-    background: var(--remove);
+.report-row:last-child td {
+    border-bottom: none;
 }
 
-.audit-main {
-    flex: 1;
-    min-width: 0;
+.report-row:hover {
+    background: var(--bg-input);
 }
 
-.audit-summary {
-    font-size: 13.5px;
-    color: var(--text);
-    margin-bottom: 5px;
-}
-
-.audit-summary .audit-user {
+.report-table td.audit-user {
     font-family: var(--font-mono);
     color: var(--accent);
+    white-space: nowrap;
 }
 
-.audit-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--text-faint);
+.report-summary {
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
 }
 
-.audit-reason {
-    margin-top: 6px;
-    font-size: 12.5px;
+.report-table td .audit-reason,
+.report-table td .audit-resolved {
+    display: block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.report-table td .audit-reason {
     color: var(--remove);
+    font-size: 12.5px;
 }
 
-.audit-resolved {
-    margin-top: 6px;
-    font-size: 12.5px;
+.report-table td .audit-resolved {
     color: var(--text-faint);
+    font-size: 12.5px;
 }
 
 .audit-pager {
@@ -1455,4 +1460,70 @@ p {
     font-size: 13.5px;
     color: var(--text);
     margin: 0;
+}
+
+/* ---------- audit report table ---------- */
+.report-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-raised);
+}
+
+.report-table thead th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    white-space: nowrap;
+}
+
+.report-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+.report-row:last-child td {
+    border-bottom: none;
+}
+
+.report-row:hover {
+    background: var(--bg-input);
+}
+
+.report-row td.audit-user {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.report-summary {
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
+}
+
+.report-table td .audit-reason {
+    color: var(--remove);
+    font-size: 12.5px;
+}
+
+.report-table td .audit-resolved {
+    color: var(--text-faint);
+    font-size: 12.5px;
 }
