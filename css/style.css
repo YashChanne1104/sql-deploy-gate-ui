@@ -1527,263 +1527,115 @@ p {
     color: var(--text-faint);
     font-size: 12.5px;
 }
-/* ===========================================================
-   Audit — Report / Ledger styling
-   Add this after your existing style.css, or merge selectively.
-   =========================================================== */
-
-:root {
-  --ledger-paper: #FAFAF8;
-  --ledger-ink: #1C1C1E;
-  --ledger-slate: #6B7280;
-  --ledger-hairline: #E3E1DA;
-  --ledger-approved: #1E7A4C;
-  --ledger-approved-bg: #EAF5EE;
-  --ledger-rejected: #B3492E;
-  --ledger-rejected-bg: #FBEEEA;
-  --ledger-pending: #B8860B;
-  --ledger-pending-bg: #FBF3E1;
-  --mono: 'IBM Plex Mono', 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+/* ---------- audit page ---------- */
+.dash-wrap.audit-wrap {
+    max-width: 1200px;
 }
 
-.audit-wrap {
-  background: var(--ledger-paper);
-}
-
-.audit-wrap h1 {
-  font-family: var(--mono);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ledger-ink);
-}
-
-.audit-wrap > p {
-  color: var(--ledger-slate);
-  font-size: 13px;
-  margin-top: 2px;
-}
-
-/* ---------- Toolbar ---------- */
 .audit-toolbar {
-  display: flex;
-  gap: 8px;
-  margin: 20px 0 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--ledger-hairline);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 22px;
 }
 
-.audit-toolbar .select-input {
-  font-family: var(--mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border: 1px solid var(--ledger-hairline);
-  background: #fff;
-  color: var(--ledger-ink);
-  border-radius: 2px;
-  padding: 6px 10px;
+.select-input {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    cursor: pointer;
 }
 
-/* ---------- Report table ---------- */
+.select-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
 .report-table-wrap {
-  border: 1px solid var(--ledger-hairline);
-  border-radius: 2px;
-  overflow-x: auto;
-  background: #fff;
+    overflow-x: auto;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
 }
 
 .report-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-raised);
 }
 
 .report-table thead th {
-  position: sticky;
-  top: 0;
-  background: var(--ledger-paper);
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ledger-slate);
-  text-align: left;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--ledger-hairline);
-  white-space: nowrap;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    white-space: nowrap;
 }
 
-.report-row {
-  border-bottom: 1px solid var(--ledger-hairline);
-  position: relative;
+.report-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
+    font-size: 13px;
+    color: var(--text-dim);
 }
 
-.report-row:last-child {
-  border-bottom: none;
+.report-row:last-child td {
+    border-bottom: none;
 }
 
 .report-row:hover {
-  background: #FBFBF9;
+    background: var(--bg-input);
 }
 
-.report-row td {
-  padding: 11px 14px;
-  color: var(--ledger-ink);
-  vertical-align: top;
+.report-table td.audit-user {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    white-space: nowrap;
 }
-
-/* left-edge stamp bar, colored by status */
-.report-row td:first-child {
-  position: relative;
-  padding-left: 18px;
-}
-
-.report-row td:first-child::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-}
-
-.report-row:has(.status-pill.approved) td:first-child::before { background: var(--ledger-approved); }
-.report-row:has(.status-pill.rejected) td:first-child::before { background: var(--ledger-rejected); }
-.report-row:has(.status-pill.pending) td:first-child::before { background: var(--ledger-pending); }
-
-/* ---------- Status ---------- */
-.audit-status-dot {
-  display: none; /* replaced by the edge stamp bar */
-}
-
-.status-pill {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 3px 8px;
-  border-radius: 2px;
-  white-space: nowrap;
-}
-
-.status-pill.approved { color: var(--ledger-approved); background: var(--ledger-approved-bg); }
-.status-pill.rejected { color: var(--ledger-rejected); background: var(--ledger-rejected-bg); }
-.status-pill.pending  { color: var(--ledger-pending);  background: var(--ledger-pending-bg); }
-
-/* ---------- Cell content ---------- */
-.audit-user {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ledger-ink);
-}
-
-.label {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 2px 6px;
-  border-radius: 2px;
-  border: 1px solid var(--ledger-hairline);
-}
-
-.label-ddl { color: #1D4ED8; border-color: #C7D7F9; background: #EEF3FE; }
-.label-dml { color: #7C3AED; border-color: #DED3FA; background: #F4EFFE; }
 
 .report-summary {
-  max-width: 320px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--ledger-ink);
-  font-size: 12.5px;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
 }
 
-.audit-reason,
-.audit-resolved {
-  font-size: 12px;
-  color: var(--ledger-slate);
-  max-width: 260px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: inline-block;
+.report-table td .audit-reason,
+.report-table td .audit-resolved {
+    display: block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.audit-resolved { color: var(--ledger-approved); }
-.audit-reason { color: var(--ledger-rejected); }
-
-.report-table td:nth-child(7),
-.report-table td:nth-child(5),
-.report-table td:nth-child(6) {
-  font-family: var(--mono);
-  font-size: 11.5px;
-  color: var(--ledger-slate);
-  white-space: nowrap;
+.report-table td .audit-reason {
+    color: var(--remove);
+    font-size: 12.5px;
 }
 
-/* ---------- Empty / error states ---------- */
-.empty-state {
-  padding: 48px 20px;
-  text-align: center;
-  color: var(--ledger-slate);
-  font-family: var(--mono);
-  font-size: 12.5px;
-  border: 1px dashed var(--ledger-hairline);
-  border-radius: 2px;
+.report-table td .audit-resolved {
+    color: var(--text-faint);
+    font-size: 12.5px;
 }
 
-.error-box {
-  padding: 14px 16px;
-  border: 1px solid var(--ledger-rejected-bg);
-  background: var(--ledger-rejected-bg);
-  color: var(--ledger-rejected);
-  border-radius: 2px;
-  font-size: 13px;
-}
-
-/* ---------- Pager ---------- */
 .audit-pager {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 16px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ledger-slate);
-}
-
-.audit-pager .btn-sm {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 6px 12px;
-  border-radius: 2px;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 720px) {
-  .report-table thead { display: none; }
-  .report-row { display: block; padding: 12px 14px; }
-  .report-row td {
     display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 4px 0;
-    border: none;
-  }
-  .report-row td:first-child { padding-left: 0; }
-  .report-row td:first-child::before { display: none; }
-  .report-row td::before {
-    content: attr(data-label);
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    color: var(--ledger-slate);
-    flex-shrink: 0;
-  }
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--text-dim);
 }
