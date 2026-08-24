@@ -3,7 +3,7 @@
 // Matches AuditSummaryOut exactly: id, user, type, query_summary,
 // ai_verdict, status, approved_by, approved_at, reject_reason, raised_at,
 // target_database. Never calls the API, never touches localStorage.
-// Renders as a report-style table.
+// Renders as a report/ledger-style table.
 // ===========================
 const AuditView = {
   escapeHtml(str) {
@@ -20,7 +20,7 @@ const AuditView = {
 
   renderList(records) {
     if (!records || !records.length) {
-      return `<div class="empty-state">No audit records.</div>`;
+      return `<div class="empty-state">No audit records for this filter.</div>`;
     }
     return `
       <div class="report-table-wrap">
@@ -61,14 +61,14 @@ const AuditView = {
 
     return `
       <tr class="report-row">
-        <td><span class="audit-status-dot ${statusCls}"></span><span class="status-pill ${statusCls}">${r.status}</span></td>
-        <td class="audit-user">${this.escapeHtml(r.user || "unknown")}</td>
-        <td><span class="label ${labelCls}">${r.type}</span></td>
-        <td class="report-summary" title="${this.escapeHtml(r.query_summary || "")}">${this.escapeHtml(r.query_summary || "(no summary)")}</td>
-        <td>${r.ai_verdict ? this.escapeHtml(r.ai_verdict) : "—"}</td>
-        <td>${r.target_database ? this.escapeHtml(r.target_database) : "—"}</td>
-        <td>${this.formatDate(r.raised_at)}</td>
-        <td>${resolution}</td>
+        <td data-label="Status"><span class="status-pill ${statusCls}">${this.escapeHtml(r.status)}</span></td>
+        <td data-label="User" class="audit-user">${this.escapeHtml(r.user || "unknown")}</td>
+        <td data-label="Type"><span class="label ${labelCls}">${this.escapeHtml(r.type)}</span></td>
+        <td data-label="Summary" class="report-summary" title="${this.escapeHtml(r.query_summary || "")}">${this.escapeHtml(r.query_summary || "(no summary)")}</td>
+        <td data-label="AI Verdict">${r.ai_verdict ? this.escapeHtml(r.ai_verdict) : "—"}</td>
+        <td data-label="Target DB">${r.target_database ? this.escapeHtml(r.target_database) : "—"}</td>
+        <td data-label="Raised">${this.formatDate(r.raised_at)}</td>
+        <td data-label="Resolution">${resolution}</td>
       </tr>
     `;
   },
