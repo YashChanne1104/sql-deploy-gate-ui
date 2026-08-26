@@ -3,7 +3,7 @@
 // Renders the workspace hero immediately with loading placeholders,
 // then fills in real Pending/Approved/Rejected counts once
 // SubmissionModel.list() resolves. A failed stats fetch never breaks
-// the page -- it just leaves the placeholders in place.
+// the page -- it just leaves the placeholders in place. 
 // ===========================
 document.addEventListener("DOMContentLoaded", () => {
     const session = initPageShell("dashboard.html");

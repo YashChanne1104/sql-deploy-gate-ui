@@ -1,7 +1,7 @@
 // ===========================
 // ApprovalsController -- wires approvals.html together. Approver/Admin only.
 // Loads pending submissions, handles single + bulk approve/reject via the
-// shared ModalView instead of native confirm()/prompt().
+// shared ModalView instead of native confirm()/prompt(). 
 // ===========================
 document.addEventListener("DOMContentLoaded", () => {
     const session = initPageShell("approvals.html", ["Approver", "Admin"]);
