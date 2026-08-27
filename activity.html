@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audit — SQL Deploy Gate</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <div class="topbar">
         <a href="dashboard.html" class="brand"><span class="gate-dot"></span> SQL DEPLOY GATE</a>
@@ -20,13 +18,11 @@
             </div>
         </div>
     </div>
-
     <div class="dash-wrap audit-wrap">
         <div class="repo-card-head" style="margin-bottom:4px;">
             <h1 style="font-size:19px;">Audit</h1>
         </div>
         <p style="margin-bottom:0;">Every push, review, and merge — a full commit history for your database.</p>
-
         <div class="audit-toolbar">
             <select id="statusFilter" class="select-input">
                 <option value="">All statuses</option>
@@ -40,18 +36,12 @@
                 <option value="DML">DML</option>
             </select>
         </div>
-
         <div id="auditList"></div>
         <div id="auditPager" class="audit-pager"></div>
     </div>
-
     <script src="js/api.js"></script>
-    <script src="js/models/authModel.js"></script>
-    <script src="js/models/submissionModel.js"></script>
-    <script src="js/views/navView.js"></script>
-    <script src="js/views/submissionsView.js"></script>
-    <script src="js/controllers/pageShell.js"></script>
-    <script src="js/controllers/submissionsController.js"></script>
+    <script src="js/models/authmodel.js"></script>
+    <script src="js/views/auditview.js"></script>
+    <script src="js/controllers/activitycontroller.js"></script>
 </body>
-
 </html>
